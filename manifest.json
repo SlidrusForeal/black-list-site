@@ -3,13 +3,13 @@
     "background_color": "#333333",
     "icons": [
       {
-        "src": "/public/assets/icons/icon512_maskable.png",
+        "src": "assets/icons/icon512_maskable.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "maskable"
       },
       {
-        "src": "/public/assets/icons/icon512_maskable.png",
+        "src": "assets/icons/icon512_maskable.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "any"

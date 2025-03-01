@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>ЧС Сосмарка</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="ЧС Сосмарка">
     
     <!-- Иконки -->
     <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.ico" />
+    
     <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon" />
     
     <!-- Стили -->
@@ -23,6 +25,7 @@
     <meta property="og:locale" content="ru_RU" />
     <meta name="theme-color" content="#333333" />
     <meta name="robots" content="all" />
+
 
     <!-- Описание для SEO -->
     <meta 
@@ -91,7 +94,7 @@
 
     <script>
       if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/scripts/sw/sw.js").then(() => {
+        navigator.serviceWorker.register("/sw.js").then(() => { // Было "/scripts/sw/sw.js"
           console.log("Service Worker зарегистрирован.");
         }).catch(error => {
           console.error("Ошибка регистрации Service Worker:", error);

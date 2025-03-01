@@ -1,7 +1,7 @@
 module.exports = {
     globDirectory: 'public/',
     globPatterns: ['**/*.{html,css,js,json,ico,png}'],
-    swDest: 'public/sw.js', // Теперь service worker в корне раздачи Netlify
+    swDest: 'public/sw.js',
     clientsClaim: true,
     skipWaiting: true,
     runtimeCaching: [
