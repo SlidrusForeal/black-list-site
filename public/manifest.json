@@ -1,0 +1,28 @@
+{
+    "theme_color": "#444444",
+    "background_color": "#333333",
+    "icons": [
+      {
+        "src": "assets/icons/icon512_maskable.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+      {
+        "src": "assets/icons/icon512_maskable.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any"
+      }
+    ],
+    "orientation": "any",
+    "display": "standalone",
+    "dir": "auto",
+    "lang": "ru",
+    "name": "ЧС Сосмарка",
+    "short_name": "ЧС Сосмарка",
+    "start_url": "public/pages/index.html",
+    "scope": "/",
+    "description": "Проверьте, есть ли ваш никнейм в чёрном списке Сосмаркской Империи на сервере Minecraft СПмакси. Мгновенный результат и актуальные данные."
+  }
+  
