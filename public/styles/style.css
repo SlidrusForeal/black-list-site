@@ -1,0 +1,251 @@
+/* Определяем переменные для основных значений */
+:root {
+    --color-bg: #333333;
+    --color-bg-secondary: #444444;
+    --color-bg-hover: #222222;
+    --color-text: #ffffff;
+    --transition-speed: 0.3s;
+    --animation-speed: 1s;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    20%, 80% { opacity: 1; }
+}
+
+@keyframes slideInDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes slideInUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes shake {
+    /* Добавьте ключевые кадры для эффекта дрожания при необходимости */
+}
+
+@keyframes bounce {
+    /* Добавьте ключевые кадры для эффекта подпрыгивания при необходимости */
+}
+
+/* Глобальные стили */
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    padding: 20px;
+}
+
+/* Шапка и навигация */
+header {
+    background-color: var(--color-bg-secondary);
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: var(--color-text);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color var(--transition-speed) ease-in-out;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+/* Стили для изображений */
+img {
+    width: 30px;
+    height: 30px;
+}
+
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+img.loaded {
+    opacity: 1;
+}
+
+/* Контейнеры и секции */
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--color-bg-secondary);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn var(--animation-speed) ease-in-out;
+}
+
+/* Заголовки и поля ввода */
+h1 {
+    text-align: center;
+    color: var(--color-text);
+    animation: slideInDown 0.5s ease-in-out;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    animation: fadeIn var(--animation-speed) ease-in-out;
+}
+
+/* Кнопки */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease-in-out, transform var(--transition-speed) ease-in-out;
+    animation: fadeIn var(--animation-speed) ease-in-out;
+}
+
+button:hover {
+    background-color: var(--color-bg-hover);
+    transform: scale(1.05);
+}
+
+/* Результат и списки */
+#result {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    animation: fadeIn var(--animation-speed) ease-in-out;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Ссылки */
+a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+/* Подвал */
+footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    animation: fadeIn var(--animation-speed) ease-in-out;
+}
+
+/* Splash-элемент */
+.splash {
+    margin-top: 35px;
+    text-align: center;
+    color: var(--color-text);
+    animation: slideInUp var(--animation-speed) ease-in-out;
+}
+
+/* Уведомление */
+#notification {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text);
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeInOut 3s;
+}
+
+/* Дополнительный маленький текст */
+#smalla {
+    font-size: 75%;
+    padding-left: 85px;
+    font-style: italic;
+    padding-bottom: 25px;
+}
+
+/* Кнопка для воспроизведения (полноэкранная) */
+#playButton {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-size: 2em;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#playButton:hover {
+    background-color: #555;
+}
+
+/* Responsive стили */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    button {
+        padding: 8px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav ul li {
+        margin: 5px 0;
+    }
+    
+    .modal-content {
+        width: 90%;
+    }
+}

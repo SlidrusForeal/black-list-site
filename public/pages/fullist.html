@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>ПОЛНЫЙ СПИСОК</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    
+    <!-- Иконки -->
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.ico" />
+    <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/assets/icons/favicon.ico" />
+
+    <!-- Стили -->
+    <link rel="stylesheet" href="/styles/style.css" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="ПОЛНЫЙ СПИСОК СОСМАРКА" />
+    <meta property="og:title" content="ПОЛНЫЙ СПИСОК СОСМАРКА" />
+    <meta property="og:image" content="/assets/icons/favicon.ico" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sosmark.netlify.app/pages/fullist.html" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta 
+      property="og:description" 
+      content="Проверьте, есть ли ваш ник в чёрном списке Второй Сосмаркской Империи на приватном сервере Майнкрафт СПмакси."
+    />
+    
+    <meta name="theme-color" content="#333333" />
+    <meta name="robots" content="all" />
+    <meta 
+      name="description" 
+      content="Полный чёрный список Сосмаркской Империи. Алфавитный перечень заблокированных игроков с аватарками и ссылками на профили NameMC."
+    />
+    <meta 
+      name="keywords" 
+      content="Чёрный список сосмарк, Сосмарк, Вторая Сосмаркская Империя, СПмини, СПмакси, Чёрный список, spworlds"
+    />
+
+    <!-- Скрипты -->
+    <script src="/scripts/app/fullist.js" defer></script>
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/index.html">Главная</a></li>
+          <li><a href="/pages/fullist.html">Полный список</a></li>
+          <li><a href="/pages/contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>ПОЛНЫЙ СПИСОК</h1>
+      <ul id="blacklist"></ul>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 ЧС Сосмарка. Все права защищены.</p>
+    </footer>
+
+    <div id="notification" class="notification" role="alert" aria-live="assertive"></div>
+  </body>
+</html>

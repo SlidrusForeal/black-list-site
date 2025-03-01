@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /scripts/
+Disallow: /styles/
+Disallow: /assets/
+Disallow: /private/
+
+Host: https://sosmark.netlify.app
+Sitemap: https://sosmark.netlify.app/sitemap.xml

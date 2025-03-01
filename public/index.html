@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>ЧС Сосмарка</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    
+    <!-- Иконки -->
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.ico" />
+    <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon" />
+    
+    <!-- Стили -->
+    <link rel="stylesheet" href="/styles/style.css">
+
+    <!-- Open Graph мета-теги -->
+    <meta property="og:site_name" content="ЧС Сосмарка" />
+    <meta property="og:title" content="ЧС Сосмарка" />
+    <meta property="og:image" content="/assets/icons/favicon.ico" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sosmark.netlify.app/" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta name="theme-color" content="#333333" />
+    <meta name="robots" content="all" />
+
+    <!-- Описание для SEO -->
+    <meta 
+      name="description" 
+      content="Проверьте, есть ли ваш никнейм в чёрном списке Сосмаркской Империи на сервере Minecraft СПмакси. Мгновенный результат и актуальные данные." 
+    />
+    <meta 
+      name="keywords" 
+      content="Чёрный список сосмарк, Сосмарк, Вторая Сосмаркская Империя, СПмини, СПмакси, Чёрный список,spworlds"
+    />
+
+    <!-- Скрипты -->
+    <script src="/scripts/app/checker.js" defer></script>
+    <script src="/scripts/lib/confetti.js" defer></script>
+
+    <!-- PWA-манифест -->
+    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
+  </head>
+
+  <body>
+    <noscript>Включите JavaScript для работы сайта.</noscript>
+
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/index.html">Главная</a></li>
+          <li><a href="/pages/fullist.html">Полный список</a></li>
+          <li><a href="/pages/contacts.html">Контакты</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1 id="splashText">Добро пожаловать на наш сайт!</h1>
+      <p>Введите ваш никнейм для проверки ЧС:</p>
+      <input
+        type="text"
+        id="playerName"
+        list="suggestions"
+        placeholder="Введите ник"
+      />
+      <datalist id="suggestions"></datalist>
+      <button
+        type="button"
+        onclick="checkBlacklist()"
+        aria-label="Проверить наличие в чёрном списке"
+        class="btn-check"
+      >
+        Проверить
+      </button>
+      <div id="result">
+        <p></p>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 ЧС Сосмарка. Все права защищены.</p>
+    </footer>
+
+    <div
+      id="notification"
+      class="notification"
+      role="alert"
+      aria-live="assertive"
+    ></div>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/scripts/sw/sw.js").then(() => {
+          console.log("Service Worker зарегистрирован.");
+        }).catch(error => {
+          console.error("Ошибка регистрации Service Worker:", error);
+        });
+      }
+    </script>
+  </body>
+</html>
