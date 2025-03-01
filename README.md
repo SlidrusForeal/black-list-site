@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/79006a77-455d-4a88-b3b5-e8c638e4bdc9/deploy-status)](https://app.netlify.com/sites/sosmark/deploys)
 # Чёрный список игроков
 
 Веб-приложение для проверки игроков в чёрном списке Сосмаркской Империи на сервере СПмакси.
