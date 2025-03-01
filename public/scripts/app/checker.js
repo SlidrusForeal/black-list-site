@@ -1,23 +1,3 @@
-"use strict";
-
-// Регистрация ServiceWorker с использованием async/await
-function registerServiceWorker() {
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", async () => {
-      try {
-        const registration = await navigator.serviceWorker.register(
-          "/public/scripts/sw/sw.js"
-        );
-        console.log("ServiceWorker зарегистрирован:", registration.scope);
-      } catch (error) {
-        console.error("Ошибка регистрации ServiceWorker:", error);
-      }
-    });
-  }
-}
-
-registerServiceWorker();
-
 document.addEventListener("DOMContentLoaded", () => {
   const splashes = [
     "У нас нет defss_KPACABA!",
