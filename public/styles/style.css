@@ -8,6 +8,10 @@
     --animation-speed: 1s;
 }
 
+.animated-element {
+    will-change: transform, opacity;
+  }
+
 /* Анимации */
 @keyframes fadeIn {
     from { opacity: 0; }

@@ -1493,6 +1493,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // Sort blacklist alphabetically by name
   blacklist.sort((a, b) => a.name.localeCompare(b.name));
 
+  function addSearch() {
+    const searchInput = document.createElement('input');
+    searchInput.placeholder = 'Поиск по нику...';
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      document.querySelectorAll('#blacklist li').forEach(li => {
+        li.style.display = li.textContent.toLowerCase().includes(term) ? '' : 'none';
+      });
+    });
+    document.querySelector('.container').prepend(searchInput);
+  }
+
   function loadBlacklist() {
     const blacklistUl = document.getElementById("blacklist");
     const fragment = document.createDocumentFragment();
