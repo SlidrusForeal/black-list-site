@@ -1,4 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Кэширование DOM элементов
+  const DOM = {
+    splashText: document.getElementById("splashText"),
+    playerName: document.getElementById("playerName"),
+    result: document.getElementById("result"),
+    suggestions: document.getElementById("suggestions"),
+    notification: document.getElementById("notification"),
+    checkButton: document.querySelector("button")
+  };
+
+  // Конфигурационные константы
+  const CONFIG = {
+    debounceDelay: 300,
+    maxSuggestions: 10,
+    checkDelay: 1000,
+    notificationTimeout: 3000
+  };
+
   const splashes = [
     "У нас нет defss_KPACABA!",
     "Kislota был добавлен ради пасхалки!",
@@ -28,25 +46,163 @@ document.addEventListener("DOMContentLoaded", () => {
     "Мы добавили конфетти!",
     "17% Сосмарка в бане..",
     "Я не думаю что в мунвиле в смехе и в дистопии весь или половина СПм..",
-    "Весь СПм аллегория на FNAF",
-  ];
+    "Весь СПм аллегория на FNAF",];
 
-  const getRandomSplash = (arr) =>
-    arr[Math.floor(Math.random() * arr.length)];
+  // Инициализация приложения
+  function init() {
+    initSplashText();
+    initEventListeners();
+  }
 
-  const displayRandomSplash = () => {
-    const splashTextElement = document.getElementById("splashText");
-    if (splashTextElement) {
-      splashTextElement.textContent = getRandomSplash(splashes);
+  function initSplashText() {
+    if (DOM.splashText) {
+      DOM.splashText.textContent = getRandomElement(splashes);
+    }
+  }
+
+  function initEventListeners() {
+    if (DOM.playerName) {
+      DOM.playerName.addEventListener("input", debounce(updateSuggestions, CONFIG.debounceDelay));
+      DOM.playerName.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") checkBlacklist();
+      });
+    }
+
+    if (DOM.checkButton) {
+      DOM.checkButton.addEventListener("click", checkBlacklist);
+    }
+  }
+
+  // Утилиты
+  const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  const debounce = (fn, delay) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => fn(...args), delay);
+    };
+  };
+
+  // Анимации
+  const applyAnimation = (element, animationName) => {
+    if (!element) return;
+    element.style.animation = `${animationName} 0.5s`;
+    element.addEventListener(
+      "animationend",
+      () => (element.style.animation = ""),
+      { once: true }
+    );
+  };
+
+  // Уведомления
+  const notificationQueue = [];
+  let isNotificationShowing = false;
+
+  const processNotificationQueue = () => {
+    if (!notificationQueue.length || !DOM.notification) return;
+    isNotificationShowing = true;
+    
+    const { message, callback } = notificationQueue.shift();
+    DOM.notification.textContent = message;
+    DOM.notification.style.visibility = "visible";
+    DOM.notification.style.animation = "fadeInOut 3s";
+
+    setTimeout(() => {
+      DOM.notification.style.visibility = "hidden";
+      isNotificationShowing = false;
+      if (callback) callback();
+      processNotificationQueue();
+    }, CONFIG.notificationTimeout);
+  };
+
+  const showNotification = (message, callback) => {
+    notificationQueue.push({ message, callback });
+    if (!isNotificationShowing) processNotificationQueue();
+  };
+
+  // Конфетти
+  const loadConfetti = () => {
+    if (typeof confetti === "undefined") {
+      const script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js";
+      document.head.appendChild(script);
     }
   };
 
-  displayRandomSplash();
+  const triggerConfetti = () => {
+    if (typeof confetti === "function") {
+      confetti({
+        particleCount: 658,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ["#ff0", "#f0f", "#0ff"],
+        disableForReducedMotion: true
+      });
+    }
+  };
+
+  // Основная логика
+  const checkBlacklist = () => {
+    const name = DOM.playerName.value.trim().toLowerCase();
+    
+    showNotification("Запрос обрабатывается...", () => {
+      if (!name) {
+        showResult("Введите никнейм для проверки", "orange", "shake");
+        return;
+      }
+
+      const isInList = blacklist.includes(name);
+      const resultMessage = isInList 
+        ? `${name}, поздравляем вы в ЧС!` 
+        : `${name}, вы не в ЧС! Возможно вы сменили ник?`;
+
+      showResult(resultMessage, isInList ? "red" : "green", isInList ? "shake" : "bounce");
+      
+      if (isInList) {
+        triggerConfetti();
+      }
+    });
+  };
+
+  const showResult = (message, color, animation) => {
+    if (DOM.result) {
+      DOM.result.textContent = message;
+      DOM.result.style.color = color;
+      applyAnimation(DOM.result, animation);
+    }
+  };
+
+  const updateSuggestions = () => {
+    if (!DOM.suggestions || !DOM.playerName) return;
+    
+    const input = DOM.playerName.value.toLowerCase();
+    DOM.suggestions.innerHTML = "";
+    
+    if (input.length > 0) {
+      const matches = blacklist
+        .filter(name => name.includes(input))
+        .slice(0, CONFIG.maxSuggestions);
+
+      matches.forEach(name => {
+        const div = document.createElement("div");
+        div.textContent = name;
+        div.className = "suggestion-item";
+        div.onclick = () => {
+          DOM.playerName.value = name;
+          DOM.suggestions.innerHTML = "";
+        };
+        DOM.suggestions.appendChild(div);
+      });
+    }
+  };
+
+  // Инициализация при загрузке
+  loadConfetti();
+  init();
 });
 
-// Массив blacklist с приведением к нижнему регистру (лишняя запятая удалена)
-const blacklist = [
-  "DrawingKruper",
+// Чёрный список (нижний регистр)
+const blacklist = [  "DrawingKruper",
   "MegaByte2H",
   "Plazzy_Tw",
   "railxuy",
@@ -416,91 +572,4 @@ const blacklist = [
   "A9C3C6",
   "poopirka",
   "AugustNV"
-].map((name) => name.toLowerCase());
-
-// Функция для применения CSS-анимаций к элементу
-const applyAnimation = (element, animationName) => {
-  if (!element) return;
-  element.style.animation = `${animationName} 0.5s`;
-  element.addEventListener(
-    "animationend",
-    () => {
-      element.style.animation = "";
-    },
-    { once: true }
-  );
-};
-
-// Функция для показа уведомлений
-const showNotification = (message) => {
-  const notification = document.getElementById("notification");
-  if (!notification) return;
-  notification.textContent = message;
-  notification.style.visibility = "visible";
-  notification.style.animation = "fadeInOut 3s";
-
-  setTimeout(() => {
-    notification.style.visibility = "hidden";
-  }, 3000);
-};
-
-// Функция для запуска эффекта конфетти (если библиотека доступна)
-const triggerConfetti = () => {
-  if (typeof confetti === "function") {
-    confetti({
-      particleCount: 658,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ["#ff0", "#f0f", "#0ff"],
-    });
-  } else {
-    console.warn("Confetti функция не найдена.");
-  }
-};
-
-// Функция для проверки наличия никнейма в blacklist
-const checkBlacklist = () => {
-  const playerInput = document.getElementById("playerName");
-  const resultDiv = document.getElementById("result");
-  if (!playerInput || !resultDiv) return;
-
-  const playerName = playerInput.value.trim().toLowerCase();
-  showNotification("Запрос обрабатывается...");
-
-  setTimeout(() => {
-    if (playerName === "") {
-      resultDiv.textContent =
-        "Строка ввода пуста. Пожалуйста, введите никнейм.";
-      resultDiv.style.color = "orange";
-      applyAnimation(resultDiv, "shake");
-    } else if (blacklist.includes(playerName)) {
-      resultDiv.textContent = `${playerName}, поздравляем вы в ЧС!`;
-      resultDiv.style.color = "red";
-      applyAnimation(resultDiv, "shake");
-    } else {
-      resultDiv.textContent = `${playerName}, вы не в ЧС! Возможно вы сменили ник?`;
-      resultDiv.style.color = "green";
-      applyAnimation(resultDiv, "bounce");
-    }
-  }, 1000);
-};
-
-// Функция для обновления подсказок (suggestions) при вводе
-const updateSuggestions = () => {
-  const inputField = document.getElementById("playerName");
-  const suggestions = document.getElementById("suggestions");
-  if (!inputField || !suggestions) return;
-
-  const inputValue = inputField.value.toLowerCase();
-  suggestions.innerHTML = "";
-  if (inputValue.length > 0) {
-    const matches = blacklist.filter((name) =>
-      name.startsWith(inputValue)
-    );
-    matches.forEach((match) => {
-      const option = document.createElement("option");
-      option.value = match;
-      suggestions.appendChild(option);
-    });
-  }
-};
+].map(name => name.toLowerCase());
