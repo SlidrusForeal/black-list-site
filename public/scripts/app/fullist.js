@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "uuid": "b6aa7ddac7cb45d0924940171559c97c"
   },
   {
-      "name": "BJlADblKA_kv777",
+      "name": "VENOM_2011",
       "uuid": "0283361a7dca4cb793942adc5c426775"
   },
   {
@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "name": "SnrChuya"
   },
   {
-      "name": "fl3kseer_Orbuz",
+      "name": "fl3kseer92DOMA",
       "uuid": "251d2a69400441f399e2df13a79dcd30"
   },
   {
@@ -261,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "uuid": "7b702b54c3684eb2ad9220928f781969"
   },
   {
-      "name": "r1zz3",
+      "name": "jagermeisterADHP",
       "uuid": "216dd10ce96e492c89e554d3647da1e3"
   },
   {
@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
   },
   {
       "uuid": "a8770b210d944aa3b1fd32d173dabbf7",
-      "name": "XII_enjoyer"
+      "name": "armorclub"
   },
   {
       "name": "Yanva",
@@ -290,7 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
   },
   {
       "uuid": "425716d5e85e4e37aaa82e7190c0dfa7",
-      "name": "SnakerMiner"
+      "name": "NotSnaker"
   },
   {
       "name": "00ABGz",
@@ -329,7 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "uuid": "eb905adb4286490f8b689d0b51099df0"
   },
   {
-      "name": "masterskaya_",
+      "name": "masterskaya",
       "uuid": "34b8196da4a24f6a894296e4ef2423e0"
   },
   {
@@ -418,10 +418,10 @@ document.addEventListener("DOMContentLoaded", () => {
   },
   {
       "uuid": "cb33de7b7b2743459695702d5f253778",
-      "name": "defss_moy_kotik"
+      "name": "vpr_ru4_demo2023"
   },
   {
-      "name": "_ayanokouji",
+      "name": "noyuuuki",
       "uuid": "7a49cef9cc7c4fb9bf2f342e754aa6ab"
   },
   {
@@ -447,10 +447,6 @@ document.addEventListener("DOMContentLoaded", () => {
   {
       "name": "SFastikF",
       "uuid": "04da62b30bf249948eeaa6908cd9aa06"
-  },
-  {
-      "name": "ABGz",
-      "uuid": "8570d30d6786446c883523c176f3866b"
   },
   {
       "name": "solumus_maximus",
@@ -702,7 +698,7 @@ document.addEventListener("DOMContentLoaded", () => {
   },
   {
       "uuid": "2871a36a599c420da0235815c779ac23",
-      "name": "tofa_v_dele"
+      "name": "Yrent"
   },
   {
       "name": "ky1nk1",
@@ -1301,7 +1297,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "uuid": "91c2a650e2bf4c47a91f1b4cea1e8ea1"
   },
   {
-      "name": "lobster_dobrias",
+      "name": "dobrias",
       "uuid": "7d849d97f5664d608a6d6ee7344f3466"
   },
   {
