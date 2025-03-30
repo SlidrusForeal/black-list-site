@@ -1,255 +1,300 @@
-/* Определяем переменные для основных значений */
+/* Современный CSS Reset и переменные */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
-    --color-bg: #333333;
-    --color-bg-secondary: #444444;
-    --color-bg-hover: #222222;
-    --color-text: #ffffff;
-    --transition-speed: 0.3s;
-    --animation-speed: 1s;
-}
-
-.animated-element {
-    will-change: transform, opacity;
-  }
-
-/* Анимации */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes fadeInOut {
-    0%, 100% { opacity: 0; }
-    20%, 80% { opacity: 1; }
-}
-
-@keyframes slideInDown {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
-}
-
-@keyframes slideInUp {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
-}
-
-@keyframes shake {
-    /* Добавьте ключевые кадры для эффекта дрожания при необходимости */
-}
-
-@keyframes bounce {
-    /* Добавьте ключевые кадры для эффекта подпрыгивания при необходимости */
+  /* Цветовая схема */
+  --color-bg: #1a1a1a;
+  --color-bg-secondary: #2c2c2c;
+  --color-text: #f1f1f1;
+  --color-accent: #ff6f61;
+  --transition-speed: 0.3s;
+  --animation-speed: 1s;
+  --font-primary: 'Poppins', sans-serif;
 }
 
 /* Глобальные стили */
-* {
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  padding: 20px;
+  overflow-x: hidden;
 }
 
-body {
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    padding: 20px;
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Утилитарный класс для анимации */
+.animated {
+  animation: fadeIn var(--animation-speed) ease-in-out;
 }
 
 /* Шапка и навигация */
 header {
-    background-color: var(--color-bg-secondary);
-    padding: 10px 0;
-    margin-bottom: 20px;
+  background-color: var(--color-bg-secondary);
+  padding: 15px 20px;
+  margin-bottom: 30px;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
+.nav-list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 30px;
 }
 
-nav ul li {
-    margin: 0 10px;
+.nav-list a {
+  text-decoration: none;
+  color: var(--color-text);
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color var(--transition-speed) ease-in-out;
 }
 
-nav ul li a {
-    color: var(--color-text);
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: background-color var(--transition-speed) ease-in-out;
+.nav-list a:hover {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
 }
 
-nav ul li a:hover {
-    background-color: #555;
-}
-
-/* Стили для изображений */
-img {
-    width: 30px;
-    height: 30px;
-}
-
-img[loading="lazy"] {
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-img.loaded {
-    opacity: 1;
-}
-
-/* Контейнеры и секции */
+/* Основной контейнер */
 .container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: var(--color-bg-secondary);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: fadeIn var(--animation-speed) ease-in-out;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: var(--color-bg-secondary);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  animation: fadeIn var(--animation-speed) ease-in-out;
 }
 
-/* Заголовки и поля ввода */
-h1 {
-    text-align: center;
-    color: var(--color-text);
-    animation: slideInDown 0.5s ease-in-out;
+/* Секция проверки */
+.checker h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  animation: slideInDown 0.5s ease-out;
 }
 
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    animation: fadeIn var(--animation-speed) ease-in-out;
+.checker p {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
-/* Кнопки */
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color var(--transition-speed) ease-in-out, transform var(--transition-speed) ease-in-out;
-    animation: fadeIn var(--animation-speed) ease-in-out;
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
 }
 
-button:hover {
-    background-color: var(--color-bg-hover);
-    transform: scale(1.05);
+.input-group input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 50px;
+  background-color: #3a3a3a;
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: box-shadow var(--transition-speed) ease-in-out;
 }
 
-/* Результат и списки */
-#result {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 4px;
-    animation: fadeIn var(--animation-speed) ease-in-out;
+.input-group input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 10px var(--color-accent);
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.suggestions-container {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid #555;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  z-index: 100;
+  max-height: 200px;
+  overflow-y: auto;
 }
 
-li {
-    padding: 8px;
-    border-bottom: 1px solid #ddd;
+/* Кнопка проверки */
+.btn-check {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease-in-out, transform var(--transition-speed) ease-in-out;
+  animation: fadeIn var(--animation-speed) ease-in-out;
 }
 
-/* Ссылки */
-a {
-    color: var(--color-text);
-    text-decoration: none;
+.btn-check:hover {
+  background-color: #ff8a75;
+  transform: translateY(-3px);
+}
+
+/* Контейнер результата */
+.result-container {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: var(--color-bg);
+  border-radius: 8px;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn var(--animation-speed) ease-in-out;
+}
+
+/* Уведомление */
+.notification {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text);
+  text-align: center;
+  border-radius: 8px;
+  padding: 15px;
+  position: fixed;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Подвал */
 footer {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #666;
-    text-align: center;
-    animation: fadeIn var(--animation-speed) ease-in-out;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #bbb;
+  animation: fadeIn var(--animation-speed) ease-in-out;
 }
 
-/* Splash-элемент */
-.splash {
-    margin-top: 35px;
-    text-align: center;
-    color: var(--color-text);
-    animation: slideInUp var(--animation-speed) ease-in-out;
+/* Адаптивность */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+    margin: 15px;
+  }
+  
+  .nav-list {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .checker h1 {
+    font-size: 2rem;
+  }
+  
+  .btn-check {
+    font-size: 1rem;
+    padding: 12px;
+  }
 }
 
-/* Уведомление */
-#notification {
-    visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-    background-color: var(--color-bg-secondary);
-    color: var(--color-text);
-    text-align: center;
-    border-radius: 2px;
-    padding: 16px;
-    position: fixed;
-    z-index: 1;
-    left: 50%;
-    bottom: 30px;
-    font-size: 17px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: fadeInOut 3s;
-}
-
-/* Дополнительный маленький текст */
-#smalla {
-    font-size: 75%;
-    padding-left: 85px;
-    font-style: italic;
-    padding-bottom: 25px;
-}
-
-/* Кнопка для воспроизведения (полноэкранная) */
-#playButton {
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    font-size: 2em;
-    border: none;
-    cursor: pointer;
+header {
+    background-color: var(--color-bg-secondary, #2c2c2c);
+    padding: 15px 20px;
+    margin-bottom: 30px;
+  }
+  
+  header nav ul {
     display: flex;
     justify-content: center;
-    align-items: center;
-}
-
-#playButton:hover {
-    background-color: #555;
-}
-
-/* Responsive стили */
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-    
-    button {
-        padding: 8px;
-    }
-    
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    nav ul li {
-        margin: 5px 0;
-    }
-    
-    .modal-content {
-        width: 90%;
-    }
-}
+    list-style: none;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  header nav ul li a {
+    text-decoration: none;
+    color: var(--color-text, #f1f1f1);
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  header nav ul li a:hover {
+    background-color: var(--color-accent, #ff6f61);
+    color: var(--color-bg, #1a1a1a);
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--color-bg-secondary, #2c2c2c);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Заголовок внутри контейнера */
+  .container h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--color-text, #f1f1f1);
+  }
+  
+  /* Стили для списка (черного списка) */
+  #blacklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #blacklist li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #444;
+    color: var(--color-text, #f1f1f1);
+  }
+  
+  /* Уведомление */
+  .notification {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: var(--color-bg-secondary, #2c2c2c);
+    color: var(--color-text, #f1f1f1);
+    text-align: center;
+    border-radius: 4px;
+    padding: 15px;
+    position: fixed;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: visibility 0.3s, opacity 0.3s;
+    opacity: 0;
+  }
+  
+  /* Класс для отображения уведомления */
+  .notification.active {
+    visibility: visible;
+    opacity: 1;
+  }

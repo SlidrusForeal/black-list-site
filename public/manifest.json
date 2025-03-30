@@ -21,7 +21,7 @@
     "lang": "ru",
     "name": "ЧС Сосмарка",
     "short_name": "ЧС Сосмарка",
-    "start_url": "public/pages/index.html",
+    "start_url": "/index.html",
     "scope": "/",
     "description": "Проверьте, есть ли ваш никнейм в чёрном списке Сосмаркской Империи на сервере Minecraft СПмакси. Мгновенный результат и актуальные данные."
   }
