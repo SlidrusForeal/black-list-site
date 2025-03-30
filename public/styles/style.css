@@ -1,4 +1,4 @@
-/* Современный CSS Reset и переменные */
+/* Общие стили */
 *,
 *::before,
 *::after {
@@ -8,7 +8,6 @@
 }
 
 :root {
-    /* Цветовая схема */
     --color-bg: #1a1a1a;
     --color-bg-secondary: #2c2c2c;
     --color-text: #f1f1f1;
@@ -18,7 +17,6 @@
     --font-primary: 'Poppins', sans-serif;
 }
 
-/* Глобальные стили */
 body {
     font-family: var(--font-primary);
     background-color: var(--color-bg);
@@ -33,7 +31,6 @@ body {
     from {
         opacity: 0;
     }
-
     to {
         opacity: 1;
     }
@@ -44,7 +41,6 @@ body {
         transform: translateY(-100%);
         opacity: 0;
     }
-
     to {
         transform: translateY(0);
         opacity: 1;
@@ -56,41 +52,46 @@ body {
         transform: translateY(100%);
         opacity: 0;
     }
-
     to {
         transform: translateY(0);
         opacity: 1;
     }
 }
 
-/* Утилитарный класс для анимации */
 .animated {
     animation: fadeIn var(--animation-speed) ease-in-out;
 }
 
-/* Шапка и навигация */
+/* Шапка сайта */
 header {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-bg-secondary, #2c2c2c);
     padding: 15px 20px;
     margin-bottom: 30px;
 }
 
-.nav-list {
+header nav ul {
     display: flex;
     justify-content: center;
     list-style: none;
     gap: 30px;
+    padding: 0;
+    margin: 0;
 }
 
-.nav-list a {
+header nav ul li a {
     text-decoration: none;
-    color: var(--color-text);
+    color: var(--color-text, #f1f1f1);
     padding: 8px 12px;
     border-radius: 4px;
-    transition: background-color var(--transition-speed) ease-in-out;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.nav-list a:hover {
+header nav ul li a:hover {
+    background-color: var(--color-accent, #ff6f61);
+    color: var(--color-bg, #1a1a1a);
+}
+
+header nav ul li a.active {
     background-color: var(--color-accent);
     color: var(--color-bg);
 }
@@ -98,15 +99,22 @@ header {
 /* Основной контейнер */
 .container {
     max-width: 800px;
-    margin: 0 auto;
-    background-color: var(--color-bg-secondary);
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--color-bg-secondary, #2c2c2c);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     animation: fadeIn var(--animation-speed) ease-in-out;
 }
 
-/* Секция проверки */
+.container h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--color-text, #f1f1f1);
+}
+
+/* Чекер */
 .checker h1 {
     font-size: 2.5rem;
     text-align: center;
@@ -120,6 +128,7 @@ header {
     margin-bottom: 20px;
 }
 
+/* Группа ввода */
 .input-group {
     position: relative;
     margin-bottom: 20px;
@@ -155,7 +164,7 @@ header {
     overflow-y: auto;
 }
 
-/* Кнопка проверки */
+/* Кнопка чекера */
 .btn-check {
     display: block;
     width: 100%;
@@ -175,7 +184,7 @@ header {
     transform: translateY(-3px);
 }
 
-/* Контейнер результата */
+/* Результаты */
 .result-container {
     margin-top: 30px;
     padding: 20px;
@@ -186,14 +195,14 @@ header {
     animation: fadeIn var(--animation-speed) ease-in-out;
 }
 
-/* Уведомление */
+/* Уведомления */
 .notification {
     visibility: hidden;
     min-width: 250px;
-    background-color: var(--color-bg-secondary);
-    color: var(--color-text);
+    background-color: var(--color-bg-secondary, #2c2c2c);
+    color: var(--color-text, #f1f1f1);
     text-align: center;
-    border-radius: 8px;
+    border-radius: 4px;
     padding: 15px;
     position: fixed;
     left: 50%;
@@ -202,9 +211,16 @@ header {
     z-index: 100;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     animation: fadeIn 0.5s ease-in-out;
+    transition: visibility 0.3s, opacity 0.3s;
+    opacity: 0;
 }
 
-/* Подвал */
+.notification.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Футер */
 footer {
     text-align: center;
     margin-top: 40px;
@@ -213,7 +229,85 @@ footer {
     animation: fadeIn var(--animation-speed) ease-in-out;
 }
 
-/* Адаптивность */
+/* Контактная информация */
+.contact-info {
+    background-color: var(--color-bg);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-info ul {
+    margin-top: 15px;
+    padding-left: 25px;
+}
+
+.contact-info li {
+    margin-bottom: 12px;
+    padding: 8px;
+    background-color: #3a3a3a;
+    border-radius: 4px;
+    transition: transform 0.2s ease;
+}
+
+.contact-info li:hover {
+    transform: translateX(10px);
+}
+
+.contact-info a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Черный список */
+#blacklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#blacklist li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: var(--color-bg);
+    border-radius: 6px;
+    animation: slideInUp 0.5s ease-out;
+    border-bottom: 1px solid #444;
+    color: var(--color-text, #f1f1f1);
+}
+
+#blacklist li::before {
+    content: "⛔";
+    font-size: 1.4em;
+}
+
+/* Контейнер чекера */
+.checker-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.checker-container p {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* Основной контейнер с анимацией */
+main.container {
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Адаптивный дизайн */
 @media (max-width: 768px) {
     .container {
         padding: 20px;
@@ -235,181 +329,14 @@ footer {
     }
 }
 
-header {
-    background-color: var(--color-bg-secondary, #2c2c2c);
-    padding: 15px 20px;
-    margin-bottom: 30px;
-}
-
-header nav ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    gap: 30px;
-    padding: 0;
-    margin: 0;
-}
-
-header nav ul li a {
-    text-decoration: none;
-    color: var(--color-text, #f1f1f1);
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-header nav ul li a:hover {
-    background-color: var(--color-accent, #ff6f61);
-    color: var(--color-bg, #1a1a1a);
-}
-
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: var(--color-bg-secondary, #2c2c2c);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Заголовок внутри контейнера */
-.container h1 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 20px;
-    color: var(--color-text, #f1f1f1);
-}
-
-/* Стили для списка (черного списка) */
-#blacklist {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-#blacklist li {
-    padding: 10px 15px;
-    border-bottom: 1px solid #444;
-    color: var(--color-text, #f1f1f1);
-}
-
-/* Уведомление */
-.notification {
-    visibility: hidden;
-    min-width: 250px;
-    background-color: var(--color-bg-secondary, #2c2c2c);
-    color: var(--color-text, #f1f1f1);
-    text-align: center;
-    border-radius: 4px;
-    padding: 15px;
-    position: fixed;
-    left: 50%;
-    bottom: 30px;
-    transform: translateX(-50%);
-    z-index: 100;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    transition: visibility 0.3s, opacity 0.3s;
-    opacity: 0;
-}
-
-/* Класс для отображения уведомления */
-.notification.active {
-    visibility: visible;
-    opacity: 1;
-}
-
-.contact-info {
-    background-color: var(--color-bg);
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .contact-info ul {
-    margin-top: 15px;
-    padding-left: 25px;
-  }
-  
-  .contact-info li {
-    margin-bottom: 12px;
-    padding: 8px;
-    background-color: #3a3a3a;
-    border-radius: 4px;
-    transition: transform 0.2s ease;
-  }
-  
-  .contact-info li:hover {
-    transform: translateX(10px);
-  }
-  
-  .contact-info a {
-    color: var(--color-accent);
-    text-decoration: none;
-  }
-  
-  .contact-info a:hover {
-    text-decoration: underline;
-  }
-  
-  /* ========== FULL LIST PAGE ========== */
-  #blacklist li {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    margin: 10px 0;
-    background-color: var(--color-bg);
-    border-radius: 6px;
-    animation: slideInUp 0.5s ease-out;
-  }
-  
-  #blacklist li::before {
-    content: "⛔";
-    font-size: 1.4em;
-  }
-  
-  /* ========== INDEX PAGE ========== */
-  .checker-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .checker-container p {
-    text-align: center;
-    margin-bottom: 15px;
-    font-size: 1.1rem;
-  }
-  
-  .result-container {
-    min-height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* ========== GENERAL IMPROVEMENTS ========== */
-  /* Убрал дублирование стилей для header */
-  header nav ul li a.active {
-    background-color: var(--color-accent);
-    color: var(--color-bg);
-  }
-  
-  /* Анимация для основного контента */
-  main.container {
-    animation: fadeIn 0.8s ease-out;
-  }
-  
-  /* Улучшенный адаптив для контактов */
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
     .contact-info li {
-      font-size: 0.9rem;
-      word-break: break-all;
+        font-size: 0.9rem;
+        word-break: break-all;
     }
     
     #blacklist li {
-      flex-direction: column;
-      align-items: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
     }
-  }
+}
