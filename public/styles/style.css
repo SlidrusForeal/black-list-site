@@ -7,6 +7,13 @@
     padding: 0;
 }
 
+a.text:active,
+a.text:hover, 
+a.text {
+  text-decoration: none;
+  color: #666;
+}
+
 :root {
     --color-bg: #1a1a1a;
     --color-bg-secondary: #2c2c2c;
