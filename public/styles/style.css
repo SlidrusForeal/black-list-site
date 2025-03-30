@@ -18,7 +18,7 @@ a.text {
     --color-bg: #1a1a1a;
     --color-bg-secondary: #2c2c2c;
     --color-text: #f1f1f1;
-    --color-accent: #ff6f61;
+    --color-accent: #6186ff;
     --transition-speed: 0.3s;
     --animation-speed: 1s;
     --font-primary: 'Poppins', sans-serif;
@@ -94,7 +94,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    background-color: var(--color-accent, #ff6f61);
+    background-color: var(--color-accent, #6186ff);
     color: var(--color-bg, #1a1a1a);
 }
 
@@ -187,7 +187,7 @@ header nav ul li a.active {
 }
 
 .btn-check:hover {
-    background-color: #ff8a75;
+    background-color: #75c1ff;
     transform: translateY(-3px);
 }
 
