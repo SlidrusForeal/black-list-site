@@ -9,17 +9,17 @@
   <meta name="apple-mobile-web-app-title" content="ЧС Сосмарка">
   
   <!-- Иконки -->
-  <link rel="apple-touch-icon" href="public/assets/icons/apple-touch-icon.png" />
-  <link rel="icon" href="plublic/assets/icons/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="icon" href="icons/favicon.ico" type="image/x-icon" />
   
   <!-- Стили -->
-  <link rel="stylesheet" href="public/styles/style.css">
-  <link rel="preload" href="public/styles/style.css" as="style">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preload" href="style.css" as="style">
 
   <!-- Open Graph мета-теги -->
   <meta property="og:site_name" content="ЧС Сосмарка" />
   <meta property="og:title" content="ЧС Сосмарка" />
-  <meta property="og:image" content="public/assets/icons/og-image.png" />
+  <meta property="og:image" content="icons/og-image.png" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sosmark.netlify.app/" />
   <meta property="og:locale" content="ru_RU" />
@@ -36,9 +36,6 @@
     name="keywords" 
     content="Чёрный список сосмарк, Сосмарк, СПмини, СПмакси, ЧС, spworlds"
   />
-
-  <!-- PWA -->
-  <link rel="manifest" href="public/manifest.json" crossorigin="use-credentials" />
 </head>
 
 <body>
@@ -48,8 +45,8 @@
     <nav>
       <ul>
         <li><a href="/index.html">Главная</a></li>
-        <li><a href="public/pages/fullist.html">Полный список</a></li>
-        <li><a href="public/pages/contacts.html">Контакты</a></li>
+        <li><a href="/fullist.html">Полный список</a></li>
+        <li><a href="/contacts.html">Контакты</a></li>
       </ul>
     </nav>
   </header>
@@ -92,20 +89,5 @@
 
   <!-- Скрипты -->
   <script src="public/scripts/app/checker.js" defer></script>
-  
-  <!-- Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(registration => {
-            console.log('SW registered: ', registration);
-          })
-          .catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
-          });
-      });
-    }
-  </script>
 </body>
 </html>

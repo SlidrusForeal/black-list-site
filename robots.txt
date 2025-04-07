@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /scripts/
+Disallow: /styles/
+Disallow: /assets/
+Disallow: /private/
+
+Host: https://sosmark.ru
+Sitemap: https://sosmark.ru/sitemap.xml
