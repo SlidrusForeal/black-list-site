@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Контакты ЧС Сосмарка</title>
-        <meta name="description" content="Контактная информация Чёрного списка Третей Сосмаркской империи">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#333333">
-        <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-        <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
-        <link rel="manifest" href="/manifest.json" crossorigin="use-credentials">
-        <link rel="stylesheet" href="/styles/style.css">
-    </head>
-    
-    <body>
-      <header>
-          <nav>
-            <ul>
-              <li><a href="/index.html">Главная</a></li>
-              <li><a href="/pages/fullist.html">Полный список</a></li>
-              <li><a href="/pages/contacts.html">Контакты</a></li>
-            </ul>
-          </nav>
-      </header>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Контакты ЧС Сосмарка</title>
+  <meta name="description" content="Контактная информация Чёрного списка Третей Сосмаркской империи">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#333333">
+  
+  <!-- Иконки -->
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  
+  <!-- Стили -->
+  <link rel="stylesheet" href="/styles/style.css">
 
-      <div class="contact-info animated">
-          <h1>Контакты</h1>
-          <div class="contact-info">
-              <p>Официальные контакты Третей Сосмаркской империи:</p>
-              <ul>
-                  <li>💬 Discord: <a href="https://discord.gg/n4QezpFdp9">Третья Сосмаркская империя</a></li>
-              </ul>
-          </div>
-      </div>
-  </body>
+  <!-- Open Graph -->
+  <meta property="og:title" content="Контакты ЧС Сосмарка" />
+  <meta property="og:image" content="/assets/icons/og-image.png" />
+  <meta property="og:url" content="https://sosmark.netlify.app/pages/contacts.html" />
+  <meta property="og:description" content="Свяжитесь с администрацией Третей Сосмаркской Империи через Discord" />
+  
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" crossorigin="use-credentials">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/index.html">Главная</a></li>
+        <li><a href="/pages/fullist.html">Полный список</a></li>
+        <li><a href="/pages/contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container contact-info animated">
+    <h1>Контакты</h1>
+    <div class="content-box">
+      <p>Официальные контакты Третей Сосмаркской империи:</p>
+      <ul class="contacts-list">
+        <li>💬 Discord: <a href="https://discord.gg/n4QezpFdp9" target="_blank" rel="noopener">Третья Сосмаркская империя</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 ЧС Сосмарка. Все права защищены.</p>
+  </footer>
+</body>
 </html>

@@ -173,4 +173,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Чёрный список (нижний регистр)
-const blacklist = [  ].map(name => name.toLowerCase());
+const blacklist = [ "K1zik" ].map(name => name.toLowerCase());
