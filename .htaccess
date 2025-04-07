@@ -1,0 +1,13 @@
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript
+</IfModule>
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteRule ^fullist\.html$ /fullist [R=301,L]
+RewriteRule ^contacts\.html$ /contacts [R=301,L]
+RewriteRule ^index\.html$ / [R=301,L]
+
+
+AddDefaultCharset UTF-8

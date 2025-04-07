@@ -7,35 +7,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="ЧС Сосмарка">
-  
-  <!-- Иконки -->
-  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-  <link rel="icon" href="icons/favicon.ico" type="image/x-icon" />
-  
-  <!-- Стили -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="preload" href="style.css" as="style">
 
-  <!-- Open Graph мета-теги -->
+  <!-- Иконки -->
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <link rel="icon" href="/icons/favicon.ico" type="image/x-icon" />
+
+  <!-- Стили -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preload" href="/css/style.css" as="style">
+
+  <!-- Open Graph -->
   <meta property="og:site_name" content="ЧС Сосмарка" />
   <meta property="og:title" content="ЧС Сосмарка" />
-  <meta property="og:image" content="icons/og-image.png" />
+  <meta property="og:image" content="/icons/og-image.png" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://sosmark.netlify.app/" />
+  <meta property="og:url" content="https://sosmark.ru/" />
   <meta property="og:locale" content="ru_RU" />
   <meta property="og:description" content="Проверьте наличие в чёрном списке Сосмаркской Империи" />
-  <meta name="theme-color" content="#333333" />
-  <meta name="robots" content="all" />
 
   <!-- SEO -->
-  <meta 
-    name="description" 
-    content="Проверьте, есть ли ваш никнейм в чёрном списке Третей Сосмаркской Империи на сервере Minecraft СПмакси. Мгновенный результат и актуальные данные." 
-  />
-  <meta 
-    name="keywords" 
-    content="Чёрный список сосмарк, Сосмарк, СПмини, СПмакси, ЧС, spworlds"
-  />
+  <meta name="description" content="Проверьте, есть ли ваш никнейм в чёрном списке Третей Сосмаркской Империи на сервере Minecraft СПмакси. Мгновенный результат и актуальные данные.">
+  <meta name="keywords" content="Чёрный список сосмарк, Сосмарк, СПмини, СПмакси, ЧС, spworlds">
+  <meta name="robots" content="all" />
+  <meta name="theme-color" content="#333333" />
 </head>
 
 <body>
@@ -44,9 +38,9 @@
   <header>
     <nav>
       <ul>
-        <li><a href="/index.html">Главная</a></li>
-        <li><a href="/fullist.html">Полный список</a></li>
-        <li><a href="/contacts.html">Контакты</a></li>
+        <li><a href="/index">Главная</a></li>
+        <li><a href="/pages/fullist">Полный список</a></li>
+        <li><a href="/pages/contacts">Контакты</a></li>
       </ul>
     </nav>
   </header>
@@ -65,11 +59,7 @@
         />
         <div id="suggestions" class="suggestions-container"></div>
       </div>
-      <button
-        type="button"
-        class="btn-check"
-        aria-label="Проверить наличие в чёрном списке"
-      >
+      <button type="button" class="btn-check" aria-label="Проверить наличие в чёрном списке">
         Проверить
       </button>
       <div id="result" class="result-container"></div>
@@ -77,17 +67,20 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 ЧС Сосмарка. Все права защищены.</p>
+    <p>&copy; 2025 SosIT. Все права защищены.</p>
   </footer>
 
-  <div 
-    id="notification" 
-    class="notification"
-    role="alert"
-    aria-live="assertive"
-  ></div>
+  <div id="notification" class="notification" role="alert" aria-live="assertive"></div>
 
   <!-- Скрипты -->
-  <script src="public/scripts/app/checker.js" defer></script>
+  <script src="/js/checker.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(reg => console.log("✅ Service Worker зарегистрирован", reg))
+        .catch(err => console.error("❌ Service Worker ошибка", err));
+    }
+  </script>
+  
 </body>
 </html>
