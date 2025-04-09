@@ -16,22 +16,31 @@
   <link rel="stylesheet" href="../css/style.css">
 
   <!-- Open Graph -->
+  <meta property="og:site_name" content="Контакты ЧС Сосмарка" />
   <meta property="og:title" content="Контакты ЧС Сосмарка" />
   <meta property="og:image" content="../icons/og-image.png" />
-  <meta property="og:url" content="https://sosmark.rucontacts" />
+  <meta property="og:url" content="https://sosmark.ru/contacts" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:image" content="/icons/og-image.png" />
+  <meta property="og:type" content="website" />
   <meta property="og:description" content="Свяжитесь с администрацией Третей Сосмаркской Империи через Discord и Telegram" />
+  <script>
+    if(window.location.pathname !== '/contacts') {
+      history.replaceState({}, '', '/contacts');
+    }
+  </script>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="/">Главная</a></li>
-        <li><a href="fullist">Полный список</a></li>
-        <li><a href="contacts">Контакты</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/">Главная</a></li>
+      <li><a href="pages/fullist.html">Полный список</a></li>
+      <li><a href="pages/contacts.html">Контакты</a></li>
+    </ul>
+  </nav>
+</header>
 
   <main class="container contact-info animated">
     <h1>Контакты</h1>
