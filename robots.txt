@@ -1,5 +1,8 @@
 User-agent: *
-Disallow:
+Disallow: /pages/
+Disallow: /js/
+Disallow: /css/
+Allow: /icons/
+Allow: /pages/sitemap.xml
 
-Sitemap: https://sosmark.ru/pages/sitemap.xml
-Disallow: /404.html
+Sitemap: https://sosmark.ru/sitemap.xml
