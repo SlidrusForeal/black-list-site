@@ -1,13 +1,46 @@
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript
-</IfModule>
-
+# Включаем перезапись URL
 RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-RewriteRule ^fullist\.html$ /fullist [R=301,L]
-RewriteRule ^contacts\.html$ /contacts [R=301,L]
+RewriteBase /
+
+# --- 1. Редирект с .html на чистый URL (во всех директориях) ---
+RewriteCond %{THE_REQUEST} \s/((?:[^/]+/)*[^/]+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L,NE]
+
+# --- 2. Внутренняя подмена чистого URL → .html ---
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+# --- 3. Редирект index.html → корень ---
+RewriteCond %{THE_REQUEST} /index\.html [NC]
 RewriteRule ^index\.html$ / [R=301,L]
 
+# --- 4. Сжатие файлов (ускорение сайта) ---
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml application/xhtml+xml image/svg+xml font/woff2
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+  DeflateCompressionLevel 6
+  Header append Vary: Accept-Encoding
+</IfModule>
 
+# --- 5. Кодировка UTF-8 по умолчанию ---
 AddDefaultCharset UTF-8
+
+# --- 6. Безопасность: запрет доступа к чувствительным файлам ---
+<FilesMatch "\.(env|log|htaccess|htpasswd|ini|bak|sql)$">
+  Require all denied
+</FilesMatch>
+
+# --- 7. Безопасность: запрет индексации директорий ---
+Options -Indexes
+
+# Обработка 404 ошибки
+ErrorDocument 404 /404.html
+
+# Кэширование для оффлайн-страницы
+<FilesMatch "offline\.html">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>

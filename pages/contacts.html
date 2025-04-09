@@ -26,9 +26,9 @@
   <header>
     <nav>
       <ul>
-        <li><a href="/index">Главная</a></li>
-        <li><a href="/pages/fullist">Полный список</a></li>
-        <li><a href="/pages/contacts">Контакты</a></li>
+        <li><a href="/">Главная</a></li>
+        <li><a href="/pages/fullist.html">Полный список</a></li>
+        <li><a href="/pages/contacts.html">Контакты</a></li>
       </ul>
     </nav>
   </header>
@@ -40,14 +40,20 @@
       <ul class="contacts-list">
         <li>💬 Discord: <a href="https://discord.gg/n4QezpFdp9" target="_blank" rel="noopener">Третья Сосмаркская Империя</a></li>
         <li>📢 Telegram: <a href="https://t.me/SosmarkSPm" target="_blank" rel="noopener">@SosmarkSPm</a></li>
+        <li>📧 Email (обычные сообщения): <a href="mailto:ave@sosmark.ru">ave@sosmark.ru</a></li>
+        <li>📧 Email (специальные сообщения): <a href="mailto:itsos@sosmark.ru">itsos@sosmark.ru</a></li>
       </ul>
     </div>
   </main>
 
   <footer>
-    <p>&copy; 2025 SosIT. Все права защищены.</p>
+    <p>&copy; <span id="year"></span> Сосмарк. Все права защищены.</p>
   </footer>
+
   <script>
+    // Автоматическое обновление года
+    document.getElementById('year').textContent = new Date().getFullYear();
+
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js')
         .then(reg => console.log("✅ Service Worker зарегистрирован", reg))

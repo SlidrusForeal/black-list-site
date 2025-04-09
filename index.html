@@ -38,9 +38,9 @@
   <header>
     <nav>
       <ul>
-        <li><a href="/index">Главная</a></li>
-        <li><a href="/pages/fullist">Полный список</a></li>
-        <li><a href="/pages/contacts">Контакты</a></li>
+        <li><a href="/">Главная</a></li>
+        <li><a href="/pages/fullist.html">Полный список</a></li>
+        <li><a href="/pages/contacts.html">Контакты</a></li>
       </ul>
     </nav>
   </header>
@@ -67,20 +67,20 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 SosIT. Все права защищены.</p>
+    <p>&copy; <span id="year"></span> Сосмарк. Все права защищены.</p>
   </footer>
 
-  <div id="notification" class="notification" role="alert" aria-live="assertive"></div>
-
-  <!-- Скрипты -->
-  <script src="/js/checker.js" defer></script>
   <script>
+    // Автоматическое обновление года
+    document.getElementById('year').textContent = new Date().getFullYear();
+
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js')
         .then(reg => console.log("✅ Service Worker зарегистрирован", reg))
         .catch(err => console.error("❌ Service Worker ошибка", err));
     }
   </script>
-  
+    <script src="./js/checker.js" defer=""></script>
+    <div id="notification" class="notification" role="alert" aria-live="assertive"></div>
 </body>
 </html>

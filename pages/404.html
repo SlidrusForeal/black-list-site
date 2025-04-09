@@ -18,7 +18,18 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 SosIT. Все права защищены.</p>
+    <p>&copy; <span id="year"></span> Сосмарк. Все права защищены.</p>
   </footer>
+
+  <script>
+    // Автоматическое обновление года
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(reg => console.log("✅ Service Worker зарегистрирован", reg))
+        .catch(err => console.error("❌ Service Worker ошибка", err));
+    }
+  </script>
 </body>
 </html>

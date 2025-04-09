@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>ПОЛНЫЙ СПИСОК</title>
+  <title>Полный список</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
 
@@ -11,13 +11,12 @@
   <link rel="apple-touch-icon" href="../icons/apple-touch-icon.png" />
   <link rel="icon" href="../icons/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="../icons/favicon.ico" />
-
   <!-- Стили -->
   <link rel="stylesheet" href="../css/style.css">
 
   <!-- Open Graph -->
-  <meta property="og:site_name" content="ПОЛНЫЙ СПИСОК СОСМАРКА" />
-  <meta property="og:title" content="ПОЛНЫЙ СПИСОК СОСМАРКА" />
+  <meta property="og:site_name" content="Полный список Сосмарка" />
+  <meta property="og:title" content="Полный список Сосмарка" />
   <meta property="og:image" content="../icons/og-image.png" />
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -34,9 +33,9 @@
   <header>
     <nav>
       <ul>
-        <li><a href="/index">Главная</a></li>
-        <li><a href="/pages/fullist">Полный список</a></li>
-        <li><a href="/pages/contacts">Контакты</a></li>
+        <li><a href="/">Главная</a></li>
+        <li><a href="/pages/fullist.html">Полный список</a></li>
+        <li><a href="/pages/contacts.html">Контакты</a></li>
       </ul>
     </nav>
   </header>
@@ -45,22 +44,23 @@
     <h1>ПОЛНЫЙ СПИСОК</h1>
     <ul id="blacklist" class="animated"></ul>
   </div>
+  <script src="../js/fullist.js" defer=""></script>
 
   <footer>
-    <p>&copy; 2025 SosIT. Все права защищены.</p>
+    <p>&copy; <span id="year"></span> Сосмарк. Все права защищены.</p>
   </footer>
 
-  <div id="notification" class="notification" role="alert" aria-live="assertive"></div>
-
-  <!-- Скрипты -->
-  <script src="../js/fullist.js" defer></script>
   <script>
+    // Автоматическое обновление года
+    document.getElementById('year').textContent = new Date().getFullYear();
+
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js')
         .then(reg => console.log("✅ Service Worker зарегистрирован", reg))
         .catch(err => console.error("❌ Service Worker ошибка", err));
     }
   </script>
+
   
 </body>
 </html>

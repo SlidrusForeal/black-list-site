@@ -22,7 +22,7 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.6;
-    padding: 20px;
+    padding: 0;
     overflow-x: hidden;
 }
 
@@ -67,6 +67,10 @@ header {
     background-color: var(--color-bg-secondary, #2c2c2c);
     padding: 15px 20px;
     margin-bottom: 30px;
+}
+
+ul {
+    list-style: none;
 }
 
 header nav ul {
@@ -248,12 +252,36 @@ footer {
     padding-left: 25px;
 }
 
-.contact-info li {
-    margin-bottom: 12px;
-    padding: 8px;
-    background-color: #3a3a3a;
+li {
+    transition: background-color 0.2s ease;
     border-radius: 4px;
-    transition: transform 0.2s ease;
+}
+
+li:hover {
+    background-color: rgba(97, 134, 255, 0.05);
+}
+
+/* Анимация при клике */
+li:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+}
+
+.contact-info li {
+    position: relative;
+    transition: all var(--transition-speed) ease;
+    cursor: pointer;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: var(--color-bg-secondary);
+    border-left: 4px solid transparent;
+}
+
+.contact-info li:hover {
+    background-color: #4a4a4a;
+    border-left-color: var(--color-accent);
+    transform: translateX(8px);
+    box-shadow: 0 4px 15px rgba(97, 134, 255, 0.2);
 }
 
 .contact-info li:hover {
@@ -287,6 +315,15 @@ footer {
     animation: slideInUp 0.5s ease-out;
     border-bottom: 1px solid #444;
     color: var(--color-text, #f1f1f1);
+    transition: all var(--transition-speed) ease;
+    padding: 15px;
+    border: 1px solid transparent;
+}
+
+#blacklist li:hover {
+    background-color: #3a3a3a;
+    border-color: var(--color-accent);
+    box-shadow: 0 2px 8px rgba(97, 134, 255, 0.15);
 }
 
 #blacklist li::before {

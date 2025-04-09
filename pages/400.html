@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Оффлайн – ЧС Сосмарка</title>
+  <title>Неверный запрос – ЧС Сосмарка</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#333333" />
   <link rel="stylesheet" href="/css/style.css" />
@@ -12,9 +12,11 @@
 
 <body>
   <main class="container">
-    <h1>Вы оффлайн</h1>
-    <p>Похоже, у вас нет подключения к Интернету. Зайдите позже!</p>
-    <a href="/index.html" class="btn-check">На главную</a>
+    <h1>400 – Неверный запрос</h1>
+    <p>Сервер не может обработать ваш запрос из-за некорректного синтаксиса.</p>
+    <div class="action-buttons">
+      <a href="/index.html" class="btn-check">На главную</a>
+    </div>
   </main>
 
   <footer>
@@ -22,7 +24,6 @@
   </footer>
 
   <script>
-    // Автоматическое обновление года
     document.getElementById('year').textContent = new Date().getFullYear();
 
     if ('serviceWorker' in navigator) {

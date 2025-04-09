@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Оффлайн – ЧС Сосмарка</title>
+  <title>Ошибка сервера – ЧС Сосмарка</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#333333" />
   <link rel="stylesheet" href="/css/style.css" />
@@ -12,9 +12,12 @@
 
 <body>
   <main class="container">
-    <h1>Вы оффлайн</h1>
-    <p>Похоже, у вас нет подключения к Интернету. Зайдите позже!</p>
-    <a href="/index.html" class="btn-check">На главную</a>
+    <h1>500 – Ошибка сервера</h1>
+    <p>Произошла внутренняя ошибка сервера. Мы уже работаем над решением проблемы.</p>
+    <div class="action-buttons">
+      <a href="/index.html" class="btn-check">На главную</a>
+      <a href="mailto:itsos@sosmark.ru" class="btn-check">Сообщить об ошибке</a>
+    </div>
   </main>
 
   <footer>
@@ -22,9 +25,8 @@
   </footer>
 
   <script>
-    // Автоматическое обновление года
     document.getElementById('year').textContent = new Date().getFullYear();
-
+    
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/service-worker.js')
         .then(reg => console.log("✅ Service Worker зарегистрирован", reg))

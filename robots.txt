@@ -2,3 +2,4 @@ User-agent: *
 Disallow:
 
 Sitemap: https://sosmark.ru/pages/sitemap.xml
+Disallow: /404.html
